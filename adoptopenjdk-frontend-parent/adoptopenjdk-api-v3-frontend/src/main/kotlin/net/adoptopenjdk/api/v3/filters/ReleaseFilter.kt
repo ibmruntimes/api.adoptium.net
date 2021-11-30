@@ -28,7 +28,7 @@ class ReleaseFilter(
         val vendorFilters = if (Ecosystem.CURRENT == Ecosystem.adoptopenjdk && vendor == Vendor.adoptopenjdk) {
             if (jvm_impl == JvmImpl.openj9) {
                 // if the user is requesting an openj9 from adopt, also include IBMs
-                (release.vendor == Vendor.adoptopenjdk || release.vendor == Vendor.ibm)
+                (release.vendor == Vendor.adoptopenjdk || (release.vendor == Vendor.ibm || release.vendor == Vendor.ibm_ce))
             } else {
                 // if we are in the adoptopenjdk api, and adoptopenjdk builds are requests, then also include adoptium builds
                 (release.vendor == Vendor.adoptium || release.vendor == Vendor.adoptopenjdk)

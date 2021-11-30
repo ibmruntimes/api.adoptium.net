@@ -45,6 +45,7 @@ class AdoptRepositoryImpl @Inject constructor(
         ".*/openjdk\\d+-openj9-nightly/.*".toRegex() to adoptReleaseMapperFactory.get(Vendor.adoptopenjdk),
 
         ".*/semeru\\d+-binaries/.*".toRegex() to adoptReleaseMapperFactory.get(Vendor.ibm),
+        ".*/semeru\\d+-certified-binaries/.*".toRegex() to adoptReleaseMapperFactory.get(Vendor.ibm_ce),
     )
 
     private fun getMapperForRepo(url: String): ReleaseMapper {
@@ -111,7 +112,8 @@ class AdoptRepositoryImpl @Inject constructor(
                 getRepoDataAsync(ADOPT_ORG, Vendor.adoptopenjdk, "openjdk$version-openj9-releases", getFun),
                 getRepoDataAsync(ADOPT_ORG, Vendor.adoptopenjdk, "openjdk$version-openj9-nightly", getFun),
 
-                getRepoDataAsync(IBM_ORG, Vendor.ibm, "semeru$version-binaries", getFun)
+                getRepoDataAsync(IBM_ORG, Vendor.ibm, "semeru$version-binaries", getFun),
+                getRepoDataAsync(IBM_ORG, Vendor.ibm_ce, "semeru$version-certified-binaries", getFun)
             )
                 .map { repo -> repo.await() }
         }

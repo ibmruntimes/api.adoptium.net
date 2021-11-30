@@ -7,7 +7,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema
 */
 @Schema(ref = VendorSchemaRef.SCHEMA_REF)
 enum class Vendor {
-    adoptium, adoptopenjdk, openjdk, alibaba, ibm;
+    adoptium, adoptopenjdk, openjdk, alibaba, ibm, ibm_ce;
     // , amazon, azul, bellsoft, , sap;
 
     companion object {

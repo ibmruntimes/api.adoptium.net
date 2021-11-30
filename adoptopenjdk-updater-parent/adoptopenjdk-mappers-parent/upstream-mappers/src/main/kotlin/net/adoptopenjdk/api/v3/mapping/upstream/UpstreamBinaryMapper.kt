@@ -70,7 +70,7 @@ object UpstreamBinaryMapper : BinaryMapper() {
     private fun getSignatureLink(assets: List<GHAsset>, binary_name: String): String? {
         return assets
             .firstOrNull { asset ->
-                asset.name == "$binary_name.sign"
+                (asset.name == "$binary_name.sign" || asset.name == "$binary_name.sig")
             }?.downloadUrl
     }
 }
